@@ -6,7 +6,7 @@ export interface ILocation {
 interface IIdentity {
   id: number;
   name: string;
-  localisation: ILocation;
+  location: ILocation;
 }
 
 export interface ICity extends IIdentity {
