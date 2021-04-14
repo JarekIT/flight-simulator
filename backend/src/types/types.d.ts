@@ -1,4 +1,4 @@
-interface ILocation {
+export interface ILocation {
   lat: number;
   lng: number;
 }
@@ -9,7 +9,7 @@ interface IIdentity {
   localisation: ILocation;
 }
 
-interface ICity extends IIdentity {
+export interface ICity extends IIdentity {
   shortName: string;
   location: ILocation;
 }
@@ -19,11 +19,11 @@ interface IPlane extends IIdentity {
   speed: number;
 }
 
-interface IEnemyPlane extends IPlane {
+export interface IEnemyPlane extends IPlane {
   fireRange: number;
 }
 
-interface ICargoPlane extends IPlane {
+export interface ICargoPlane extends IPlane {
   start: ICity;
   end: ICity;
   status: boolean;
