@@ -17,26 +17,30 @@ export interface ICity extends IIdentity {
 interface IPlane extends IIdentity {
   location: ILocation;
   speed: number;
-  spawn: () => void;
   move: () => void;
 }
 
 export interface IEnemyPlane extends IPlane {
   fireRange: number;
-  inRange: () => boolean;
-  shoot: () => void;
+  inRange: (c: ICargoPlane) => boolean;
+  shoot: (c: ICargoPlane) => void;
 }
 
 export interface ICargoPlane extends IPlane {
+  alive: boolean;
   start: ICity;
   end: ICity;
-  status: boolean;
   flightDirection: number;
   setRandomDestination: () => void;  
   startJourney: () => void;
   endJourney: () => void;
+  hitBy: string;
 }
 
 export interface IFactory {
   create: <T>() => T;
+}
+
+export interface ISpawner {
+  spawn: <T>() => T;
 }
