@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CitiesModule } from './cities/cities.module';
-import { PlanesModule } from './planes/planes.module';
+import { CitiesModule } from './modules/cities/cities.module';
+import { PlanesModule } from './modules/planes/planes.module';
 
 @Module({
   imports: [CitiesModule, PlanesModule],

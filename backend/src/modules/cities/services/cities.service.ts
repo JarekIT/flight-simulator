@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { response } from 'express';
-import { ICity } from '../../types/types';
+import { ICity } from '../../../types/types';
 
 @Injectable()
 export class CitiesService {
