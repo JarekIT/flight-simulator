@@ -1,17 +1,28 @@
 import { Injectable } from '@nestjs/common';
-import { response } from 'express';
-import { ICity } from '../../../types/types';
+import { City } from '../entity/city.entity';
+import * as citiesJson from '../db/cities.json';
 
 @Injectable()
 export class CitiesService {
-  async getAll(): Promise<ICity[]> {
-    let cities: ICity[];
+  constructor() {
+    this.initCities();
+  }
 
-    fetch('../../db/cities.json')
-      .then((response) => response.json())
-      .then((data: ICity[]) => (cities = data))
-      .catch((err) => console.log(err));
+  private readonly allCities: City[] = [];
 
-    return cities;
+  getCities(): City[] {
+    return this.allCities;
+  }
+
+  private async initCities(): Promise<void> {
+    // const dataJSON = await fetchCities();
+    const dataJson = await citiesJson;
+    console.table(dataJson);
+
+    dataJson.forEach((city: any) => {
+      this.allCities.push(
+        new City(city.uuid, city.name, city.shortName, city.location),
+      );
+    });
   }
 }
