@@ -1,18 +1,23 @@
 import { Controller, Get } from '@nestjs/common';
-import { PlanesService } from '../services/planes.service';
-import { ICargoPlane, IEnemyPlane } from 'src/types/types';
+import { Cargo } from '../entity/cargo.entity';
+import { Enemy } from '../entity/enemy.entity';
+import { CargoService } from '../services/cargo.service';
+import { EnemyService } from '../services/enemy.service';
 
 @Controller('planes')
 export class PlanesController {
-  constructor(private readonly planesService: PlanesService) {}
+  constructor(
+    private readonly enemiesService: EnemyService,
+    private readonly cargosService: CargoService,
+  ) {}
 
   @Get('enemies')
-  async getAllEnemies(): Promise<IEnemyPlane[]> {
-    return await this.planesService.getAllEnemies();
+  getAllEnemies(): Enemy[] {
+    return this.enemiesService.getEnemies();
   }
 
   @Get('cargos')
-  async getAllCargos(): Promise<ICargoPlane[]> {
-    return await this.planesService.getAllCargos();
+  getAllCargos(): Cargo[] {
+    return this.cargosService.getCargos();
   }
 }
