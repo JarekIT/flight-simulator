@@ -1,62 +1,62 @@
 [
     {
-      "id":1,
+      "uuid":"5827a74b-bf3e-4c39-99d8-a318bd358599",
       "name":"Berlin",
       "location":{ "lat":52.520008, "lng":13.404954 },
-      "shortName":"BERL",
+      "shortName":"BERL"
     },
     {
-      "id":2,
+      "uuid":"1dfeb040-c103-4fe8-b3cb-c42ce69bfa97",
       "name":"Prague",
       "location":{ "lat":50.075539, "lng":14.4378 },
-      "shortName":"PRAG",
+      "shortName":"PRAG"
     },
     {
-      "id":3,
+      "uuid":"d45e0ee5-d9e3-4887-80e9-64b5de2bb1ec",
       "name":"Bratislava",
       "location":{ "lat":48.148598, "lng":17.107748 },
-      "shortName":"BRAT",
+      "shortName":"BRAT"
     },
     {
-      "id":4,
+      "uuid":"65cd7bd7-60af-45e3-b1e9-1bcecccee58f",
       "name":"Vilnius",
       "location":{ "lat":54.687157, "lng":25.279652 },
-      "shortName":"VILN",
+      "shortName":"VILN"
     },
     {
-      "id":5,
+      "uuid":"a4874647-9f9e-4b7d-8807-137b56819f29",
       "name":"Minsk",
       "location":{ "lat":53.902334, "lng":27.561879 },
-      "shortName":"MINS",
+      "shortName":"MINS"
     },
     {
-      "id":6,
+      "uuid":"b8eb752f-0804-4a0a-8dad-832c4baca5f3",
       "name":"København",
       "location":{ "lat":55.6867243, "lng":12.5700724 },
-      "shortName":"KOPE",
+      "shortName":"KOPE"
     },
     {
-      "id":7,
+      "uuid":"cb87ff78-366f-4447-b25a-6899d13dfe50",
       "name":"Kyiv",
       "location":{ "lat":50.4500336, "lng":30.5241361 },
-      "shortName":"KYIV",
+      "shortName":"KYIV"
     },
     {
-      "id":8,
+      "uuid":"6ef5d8dc-9317-43a8-99dc-76e0892103ef",
       "name":"Stockholm",
       "location":{ "lat":59.3251172, "lng":18.0710935 },
-      "shortName":"STOC",
+      "shortName":"STOC"
     },
     {
-      "id":9,
+      "uuid":"187ba35d-8e41-4f38-9c5e-d8296582abb8",
       "name":"Budapest",
       "location":{ "lat":47.4813896, "lng":19.1460941 },
-      "shortName":"BUDA",
+      "shortName":"BUDA"
     },
     {
-      "id":10,
+      "uuid":"4c2ee125-148c-4159-9fb9-adcef9ddb633",
       "name":"Riga",
       "location":{ "lat":56.9493977, "lng":24.1051846 },
-      "shortName":"RIGA",
-    },
+      "shortName":"RIGA"
+    }
   ]
