@@ -22,3 +22,11 @@ interface IPlane extends IIdentity {
 export interface EnemyDTO extends IPlane {
   fireRange: number;
 }
+
+export interface CargoDTO extends IPlane {
+  alive: boolean;
+  start: CityDTO;
+  end: CityDTO;
+  landed: boolean;
+  hitBy?: string;
+}
