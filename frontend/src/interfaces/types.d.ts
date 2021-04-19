@@ -6,9 +6,19 @@ export interface IPoint {
 interface IIdentity {
   uuid: string;
   name: string;
-  location: ILocation;
+  location: IPoint;
 }
 
 export interface CityDTO extends IIdentity {
   shortName: string;
+}
+
+interface IPlane extends IIdentity {
+  location: IPoint;
+  speed: number;
+  flightAngle?: number;
+}
+
+export interface EnemyDTO extends IPlane {
+  fireRange: number;
 }
