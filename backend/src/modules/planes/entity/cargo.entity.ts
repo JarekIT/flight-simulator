@@ -1,5 +1,5 @@
 import { City } from 'src/modules/cities/entity/city.entity';
-import { ICargoPlane } from 'src/types/all.types';
+import { CargoStatus, ICargoPlane } from 'src/types/all.types';
 import { Plane } from './plane.entity';
 
 export class Cargo extends Plane implements ICargoPlane {
@@ -9,14 +9,12 @@ export class Cargo extends Plane implements ICargoPlane {
     public speed: number,
   ) {
     super(uuid, name, speed);
-    this.alive = true;
-    this.landed = true;
+    this.status = CargoStatus.AIRPORT;
   }
 
-  alive: boolean;
+  status: CargoStatus;
   start: City;
   end: City;
-  landed: boolean;
   hitBy: string;
 
   static i = 0;
@@ -25,9 +23,9 @@ export class Cargo extends Plane implements ICargoPlane {
     try {
       Cargo.i++;
       console.log(
-        `Flight nr: ${Cargo.i} | ${this.name} - ${this.start.name} -> ${this.end.name}`,
+        `Flight nr: ${Cargo.i} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
       );
-      this.landed = false;
+      this.status = CargoStatus.FLIGHT;
     } catch (e) {
       console.error(e);
     }

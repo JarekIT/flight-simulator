@@ -11,7 +11,7 @@ export class IntervalService {
 
   startInterval(movePlaneIntervalInMs: number): void {
     setInterval(() => {
-      this.dispatcherService.startAllLandedCargos();
+      this.dispatcherService.startAllCargosInAirports();
       this.moverService.moveAllCargos();
       this.moverService.moveAllEnemies();
     }, movePlaneIntervalInMs);

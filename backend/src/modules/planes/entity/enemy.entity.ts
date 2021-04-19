@@ -1,4 +1,4 @@
-import { IEnemyPlane } from 'src/types/all.types';
+import { CargoStatus, IEnemyPlane } from 'src/types/all.types';
 import { Cargo } from './cargo.entity';
 import { Plane } from './plane.entity';
 
@@ -24,7 +24,7 @@ export class Enemy extends Plane implements IEnemyPlane {
   }
 
   shoot(cargo: Cargo): void {
-    cargo.alive = false;
+    cargo.status = CargoStatus.OFFLINE;
     cargo.hitBy = this.name;
   }
 

@@ -3,7 +3,7 @@ import { City } from 'src/modules/cities/entity/city.entity';
 import { CitiesService } from 'src/modules/cities/services/cities.service';
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { CargoService } from 'src/modules/planes/services/cargo.service';
-import { ILocation } from 'src/types/all.types';
+import { CargoStatus, ILocation } from 'src/types/all.types';
 
 @Injectable()
 export class DispatcherService {
@@ -12,10 +12,13 @@ export class DispatcherService {
     private readonly cargoService: CargoService,
   ) {}
 
-  startAllLandedCargos() {
+  startAllCargosInAirports() {
     this.cargoService
       .getCargos()
-      .forEach((cargo: Cargo) => cargo.landed && this.sendCargoToFlight(cargo));
+      .forEach(
+        (cargo: Cargo) =>
+          cargo.status == CargoStatus.AIRPORT && this.sendCargoToFlight(cargo),
+      );
   }
 
   private sendCargoToFlight(cargo: Cargo) {

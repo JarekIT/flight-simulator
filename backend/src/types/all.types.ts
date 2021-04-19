@@ -30,10 +30,8 @@ export interface IEnemyPlane extends IPlane {
 }
 
 export interface ICargoPlane extends IPlane {
-  alive: boolean;
   start: ICity;
   end: ICity;
-  landed: boolean;
   hitBy?: string;
   flyAway: () => void;
   board: () => void;
@@ -52,4 +50,10 @@ export interface IFactory {
 
 export interface ISpawner {
   spawn: (plane: PlaneType) => void;
+}
+
+export enum CargoStatus {
+  AIRPORT = 'AIRPORT',
+  FLIGHT = 'FLIGHT',
+  OFFLINE = 'OFFLINE',
 }

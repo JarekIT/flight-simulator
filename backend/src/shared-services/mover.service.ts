@@ -3,6 +3,7 @@ import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { Enemy } from 'src/modules/planes/entity/enemy.entity';
 import { CargoService } from 'src/modules/planes/services/cargo.service';
 import { EnemyService } from 'src/modules/planes/services/enemy.service';
+import { CargoStatus } from 'src/types/all.types';
 
 @Injectable()
 export class MoverService {
@@ -21,6 +22,6 @@ export class MoverService {
   }
 
   private canMove(cargo: Cargo): boolean {
-    return cargo.alive && !cargo.landed;
+    return cargo.status == CargoStatus.FLIGHT;
   }
 }
