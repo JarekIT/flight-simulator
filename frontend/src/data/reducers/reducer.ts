@@ -19,6 +19,23 @@ export const reducer = (state: IState, action: IAction): IState => {
           error: action.payload,
         },
       };
+    case "ENEMIES_GET_SUCCESS":
+      return {
+        ...state,
+        enemies: {
+          ...state.cities,
+          isLoaded: true,
+          data: action.payload,
+        },
+      };
+    case "ENEMIES_GET_FAILURE":
+      return {
+        ...state,
+        enemies: {
+          ...state.cities,
+          error: action.payload,
+        },
+      };
     default:
       return state;
   }
