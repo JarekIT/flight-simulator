@@ -1,0 +1,12 @@
+  /*
+    scale 1 => 1h in real = 1 sec in simulator
+    so 100 km/h => 1 sec = 100 km traveled
+    scale 0.01 => 1 sec = 1 km traveled
+  */
+{
+    "speedScale": 0.01,
+    "intervalInMs": 1000,
+    "numberOfCargos": 10,
+    "numberOfEnemies": 10,
+    "enemySpawnRangeInKm": 2000
+}

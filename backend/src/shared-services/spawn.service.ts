@@ -4,27 +4,32 @@ import { CitiesService } from 'src/modules/cities/services/cities.service';
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { Enemy } from 'src/modules/planes/entity/enemy.entity';
 import { ILocation, ISpawner, PlaneType } from '../types/all.types';
+import * as initSettings from '../settings.json';
 
 @Injectable()
 export class SpawnService implements ISpawner {
   constructor(private readonly citiesService: CitiesService) {}
 
   private readonly centerPoint: ILocation = { lat: 50, lng: 15 };
-  private readonly spawnRange: number = 1500;
 
   spawn(plane: PlaneType) {
     if (plane instanceof Cargo) {
       (plane as Cargo).location = this.setRandomAirportLocation(plane);
     } else if (plane instanceof Enemy) {
-      // random position in range 1500 km from center of Europe
       (plane as Enemy).location = this.setRandomCircumferencePoint(
         this.centerPoint,
-        this.spawnRange,
+        this.randomSpawnDistance(),
       );
     } else {
       return null;
     }
   }
+
+  private randomSpawnDistance = (): number => {
+    return (
+      Math.pow(Math.random(), 0.5) * initSettings.enemySpawnRangeInKm * 1000
+    );
+  };
 
   private setRandomAirportLocation = (cargo: Cargo) => {
     const cities: City[] = this.citiesService.getCities();

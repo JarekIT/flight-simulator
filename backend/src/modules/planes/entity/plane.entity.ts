@@ -1,4 +1,5 @@
 import { ILocation, IPlane } from 'src/types/all.types';
+import * as initSettings from 'src/settings.json';
 
 export class Plane implements IPlane {
   constructor(public uuid: string, public name: string, public speed: number) {}
@@ -47,9 +48,6 @@ export class Plane implements IPlane {
   }
 
   convertSpeedToDistanceInOneInterval(speed: number): number {
-    // if we assume, that 1h in real = 10 sec in simulator
-    // so 100 km/h => 10 km in 1 sec
-    const scale = 0.1;
-    return scale * speed;
+    return initSettings.speedScale * speed;
   }
 }

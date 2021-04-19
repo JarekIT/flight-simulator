@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { IntervalService } from './shared-services/interval.service';
 import { ManagerService } from './shared-services/manager.service';
+import * as initSettings from './settings.json';
 
 @Injectable()
 export class AppService {
@@ -8,9 +9,9 @@ export class AppService {
     private readonly intervalService: IntervalService,
     private readonly managerService: ManagerService,
   ) {
-    this.prepareCargos(10);
-    this.prepareEnemies(10);
-    this.initInterval(1000);
+    this.prepareCargos(initSettings.numberOfCargos);
+    this.prepareEnemies(initSettings.numberOfEnemies);
+    this.initInterval(initSettings.intervalInMs);
   }
 
   private initInterval(movePlaneIntervalInMs: number): void {
