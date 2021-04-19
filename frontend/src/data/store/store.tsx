@@ -1,5 +1,6 @@
 import React, { useReducer, createContext } from "react";
-import { IAction, IState, IStore } from "../interfaces/store";
+import { IState, IStore } from "../../interfaces/store";
+import { reducer } from "../reducers/reducer";
 
 const initialState: IState = {
   cities: {
@@ -19,16 +20,9 @@ const initialState: IState = {
   },
 };
 
-const reducer = (state: IState, action: IAction): IState => {
-  switch (action.type) {
-    default:
-      return state;
-  }
-};
-
 const Store: React.Context<IStore> = createContext<IStore>({
   state: initialState,
-  dispatch: (IAction) => {
+  dispatch: () => {
     throw new Error("Context Must Be initialized");
   },
 });

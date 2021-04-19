@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import { StoreProvider } from "./store/store";
+import { StoreProvider } from "./data/store/store";
 
 ReactDOM.render(
   <React.StrictMode>
