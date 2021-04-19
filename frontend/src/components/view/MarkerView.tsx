@@ -20,7 +20,7 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
         return `${path}/images/cargo-airport.svg`;
       case "cargo-flight":
         return `${path}/images/cargo-flight.svg`;
-      case "cargo-shooted":
+      case "cargo-offline":
         return `${path}/images/cargo-explosion.svg`;
 
       default:
@@ -40,7 +40,7 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
         scaledSize: { width: 36, height: 36 },
       }}
       position={{ lat: element.location.lat, lng: element.location.lng }}
-      onClick={() => console.log(element.name)}
+      onClick={() => console.log(element)}
     />
   );
 };
