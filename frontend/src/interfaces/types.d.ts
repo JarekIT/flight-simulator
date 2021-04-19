@@ -3,7 +3,7 @@ export interface IPoint {
   lng: number;
 }
 
-interface IIdentity {
+export interface IIdentity {
   uuid: string;
   name: string;
   location: IPoint;
