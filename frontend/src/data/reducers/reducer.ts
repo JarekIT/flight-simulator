@@ -23,7 +23,7 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         enemies: {
-          ...state.cities,
+          ...state.enemies,
           isLoaded: true,
           data: action.payload,
         },
@@ -32,7 +32,24 @@ export const reducer = (state: IState, action: IAction): IState => {
       return {
         ...state,
         enemies: {
-          ...state.cities,
+          ...state.enemies,
+          error: action.payload,
+        },
+      };
+    case "CARGOS_GET_SUCCESS":
+      return {
+        ...state,
+        cargos: {
+          ...state.cargos,
+          isLoaded: true,
+          data: action.payload,
+        },
+      };
+    case "CARGOS_GET_FAILURE":
+      return {
+        ...state,
+        cargos: {
+          ...state.cargos,
           error: action.payload,
         },
       };
