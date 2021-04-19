@@ -7,7 +7,7 @@ import { loadEnemies } from "./data/actions/enemies.actions";
 import { Store } from "./data/store/store";
 
 function App() {
-  const { state, dispatch } = useContext(Store);
+  const { dispatch } = useContext(Store);
 
   useEffect(() => {
     loadCities(dispatch);
@@ -16,7 +16,13 @@ function App() {
     // eslint-disable-next-line
   }, []);
 
-  console.log(state);
+  useEffect(() => {
+    setInterval(() => {
+      loadEnemies(dispatch);
+      loadCargos(dispatch);
+    }, 2000);
+    // eslint-disable-next-line
+  }, []);
 
   return (
     <div className="App" data-testid={"app"}>
