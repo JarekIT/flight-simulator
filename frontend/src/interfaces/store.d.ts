@@ -1,19 +1,21 @@
+import { CargoDTO, CityDTO, EnemyDTO, GroupedCargos } from "./types";
+
 export type Dispatch = React.Dispatch<IAction>;
 
 export interface IState {
-  cities: {
+  citiesState: {
     isLoaded: boolean;
-    data: any[];
+    cities: CityDTO[];
     error: null | string;
   };
-  enemies: {
+  enemiesState: {
     isLoaded: boolean;
-    data: any[];
+    enemies: EnemyDTO[];
     error: null | string;
   };
-  cargos: {
+  cargosState: {
     isLoaded: boolean;
-    data: any[];
+    cargos: GroupedCargos;
     error: null | string;
   };
 }

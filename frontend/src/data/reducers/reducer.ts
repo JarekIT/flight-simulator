@@ -5,51 +5,51 @@ export const reducer = (state: IState, action: IAction): IState => {
     case "CITIES_GET_SUCCESS":
       return {
         ...state,
-        cities: {
-          ...state.cities,
+        citiesState: {
+          ...state.citiesState,
           isLoaded: true,
-          data: action.payload,
+          cities: action.payload,
         },
       };
     case "CITIES_GET_FAILURE":
       return {
         ...state,
-        cities: {
-          ...state.cities,
+        citiesState: {
+          ...state.citiesState,
           error: action.payload,
         },
       };
     case "ENEMIES_GET_SUCCESS":
       return {
         ...state,
-        enemies: {
-          ...state.enemies,
+        enemiesState: {
+          ...state.enemiesState,
           isLoaded: true,
-          data: action.payload,
+          enemies: action.payload,
         },
       };
     case "ENEMIES_GET_FAILURE":
       return {
         ...state,
-        enemies: {
-          ...state.enemies,
+        enemiesState: {
+          ...state.enemiesState,
           error: action.payload,
         },
       };
     case "CARGOS_GET_SUCCESS":
       return {
         ...state,
-        cargos: {
-          ...state.cargos,
+        cargosState: {
+          ...state.cargosState,
           isLoaded: true,
-          data: action.payload,
+          cargos: action.payload,
         },
       };
     case "CARGOS_GET_FAILURE":
       return {
         ...state,
-        cargos: {
-          ...state.cargos,
+        cargosState: {
+          ...state.cargosState,
           error: action.payload,
         },
       };

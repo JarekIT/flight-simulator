@@ -1,3 +1,5 @@
+import { CargoStatus } from "./enum";
+
 export interface IPoint {
   lat: number;
   lng: number;
@@ -28,4 +30,10 @@ export interface CargoDTO extends IPlane {
   end: CityDTO;
   hitBy?: string;
   status: CargoStatus;
+}
+
+export interface GroupedCargos {
+  cargosAirport: CargoDTO[];
+  cargosFlight: CargoDTO[];
+  cargosOffline: CargoDTO[];
 }

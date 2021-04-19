@@ -3,19 +3,23 @@ import { IState, IStore } from "../../interfaces/store";
 import { reducer } from "../reducers/reducer";
 
 const initialState: IState = {
-  cities: {
+  citiesState: {
     isLoaded: false,
-    data: [],
+    cities: [],
     error: null,
   },
-  enemies: {
+  enemiesState: {
     isLoaded: false,
-    data: [],
+    enemies: [],
     error: null,
   },
-  cargos: {
+  cargosState: {
     isLoaded: false,
-    data: [],
+    cargos: {
+      cargosAirport: [],
+      cargosFlight: [],
+      cargosOffline: [],
+    },
     error: null,
   },
 };
