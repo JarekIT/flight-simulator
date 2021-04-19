@@ -1,5 +1,5 @@
 import React, { useReducer, createContext } from "react";
-import { IAction, IState, IStore } from "../interfaces/context";
+import { IAction, IState, IStore } from "../interfaces/store";
 
 const initialState: IState = {
   cities: {
