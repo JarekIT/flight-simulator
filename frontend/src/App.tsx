@@ -2,7 +2,7 @@ import { useEffect, useContext } from "react";
 import "./App.css";
 import Map from "./components/Map";
 import { loadCargos } from "./data/actions/cargos.actions";
-import { loadCities } from "./data/actions/cities.actions";
+import { loadAirports } from "./data/actions/airports.actions";
 import { loadEnemies } from "./data/actions/enemies.actions";
 import { Store } from "./data/store/store";
 
@@ -10,7 +10,7 @@ function App() {
   const { dispatch } = useContext(Store);
 
   useEffect(() => {
-    loadCities(dispatch);
+    loadAirports(dispatch);
     loadEnemies(dispatch);
     loadCargos(dispatch);
     // eslint-disable-next-line

@@ -12,7 +12,7 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
 
   const setIcon = (type: string): string => {
     switch (type) {
-      case "city":
+      case "airport":
         return `${path}/images/airport.svg`;
       case "enemy":
         return `${path}/images/helicopter.svg`;

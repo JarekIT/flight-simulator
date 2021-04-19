@@ -2,20 +2,20 @@ import { IAction, IState } from "../../interfaces/store";
 
 export const reducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
-    case "CITIES_GET_SUCCESS":
+    case "AIRPORTS_GET_SUCCESS":
       return {
         ...state,
-        citiesState: {
-          ...state.citiesState,
+        airportsState: {
+          ...state.airportsState,
           isLoaded: true,
-          cities: action.payload,
+          airports: action.payload,
         },
       };
-    case "CITIES_GET_FAILURE":
+    case "AIRPORTS_GET_FAILURE":
       return {
         ...state,
-        citiesState: {
-          ...state.citiesState,
+        airportsState: {
+          ...state.airportsState,
           error: action.payload,
         },
       };

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../data/store/store";
-import { CargoDTO, CityDTO, EnemyDTO } from "../interfaces/types";
+import { CargoDTO, AirportDTO, EnemyDTO } from "../interfaces/types";
 import CircleView from "./view/CircleView";
 import MapView from "./view/MapView";
 import MarkerView from "./view/MarkerView";
@@ -8,7 +8,7 @@ import PolylineView from "./view/PolylineView";
 
 const Map: React.FC = () => {
   const { state } = useContext(Store);
-  const { cities } = state.citiesState;
+  const { airports } = state.airportsState;
   const { enemies } = state.enemiesState;
   const {
     cargosAirport,
@@ -35,10 +35,10 @@ const Map: React.FC = () => {
 
   return (
     <MapView mapOptions={mapOptions}>
-      {cities.map((city: CityDTO) => {
+      {airports.map((airport: AirportDTO) => {
         return (
-          <React.Fragment key={city.uuid}>
-            <MarkerView type="city" element={city} />
+          <React.Fragment key={airport.uuid}>
+            <MarkerView type="airport" element={airport} />
           </React.Fragment>
         );
       })}

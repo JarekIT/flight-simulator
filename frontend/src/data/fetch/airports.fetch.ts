@@ -1,13 +1,13 @@
 import axios, { AxiosResponse } from "axios";
-import { CityDTO } from "../../interfaces/types";
+import { AirportDTO } from "../../interfaces/types";
 
 require("dotenv").config();
 
-export const fetchCities = async (): Promise<CityDTO[] | Error> => {
+export const fetchAirports = async (): Promise<AirportDTO[] | Error> => {
   const API: string | undefined = process.env.REACT_APP_API_URL;
 
   return axios
-    .get(`${API}cities`)
+    .get(`${API}airports`)
     .then((res: AxiosResponse<any>) => {
       return res.data;
     })

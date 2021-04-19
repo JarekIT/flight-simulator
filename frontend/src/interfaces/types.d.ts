@@ -11,8 +11,10 @@ export interface IIdentity {
   location: IPoint;
 }
 
-export interface CityDTO extends IIdentity {
+export interface AirportDTO extends IIdentity {
   shortName: string;
+  country: string;
+  city: string;
 }
 
 interface IPlane extends IIdentity {
@@ -26,8 +28,8 @@ export interface EnemyDTO extends IPlane {
 }
 
 export interface CargoDTO extends IPlane {
-  start: CityDTO;
-  end: CityDTO;
+  start: AirportDTO;
+  end: AirportDTO;
   hitBy?: string;
   status: CargoStatus;
 }

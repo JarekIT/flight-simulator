@@ -3,9 +3,9 @@ import { IState, IStore } from "../../interfaces/store";
 import { reducer } from "../reducers/reducer";
 
 const initialState: IState = {
-  citiesState: {
+  airportsState: {
     isLoaded: false,
-    cities: [],
+    airports: [],
     error: null,
   },
   enemiesState: {

@@ -1,11 +1,11 @@
-import { CargoDTO, CityDTO, EnemyDTO, GroupedCargos } from "./types";
+import { CargoDTO, AirportDTO, EnemyDTO, GroupedCargos } from "./types";
 
 export type Dispatch = React.Dispatch<IAction>;
 
 export interface IState {
-  citiesState: {
+  airportsState: {
     isLoaded: boolean;
-    cities: CityDTO[];
+    airports: AirportDTO[];
     error: null | string;
   };
   enemiesState: {
