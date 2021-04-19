@@ -24,9 +24,8 @@ export interface EnemyDTO extends IPlane {
 }
 
 export interface CargoDTO extends IPlane {
-  alive: boolean;
   start: CityDTO;
   end: CityDTO;
-  landed: boolean;
   hitBy?: string;
+  status: CargoStatus;
 }
