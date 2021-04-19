@@ -1,4 +1,4 @@
-import { City } from 'src/modules/cities/entity/city.entity';
+import { Airport } from 'src/modules/airports/entity/airport.entity';
 import { CargoStatus, ICargoPlane } from 'src/types/all.types';
 import { Plane } from './plane.entity';
 
@@ -13,8 +13,8 @@ export class Cargo extends Plane implements ICargoPlane {
   }
 
   status: CargoStatus;
-  start: City;
-  end: City;
+  start: Airport;
+  end: Airport;
   hitBy: string;
 
   static i = 0;
@@ -39,7 +39,7 @@ export class Cargo extends Plane implements ICargoPlane {
     this.flightAngle = angle;
   }
 
-  setDestination(city: City): void {
-    this.end = city;
+  setDestination(airport: Airport): void {
+    this.end = airport;
   }
 }

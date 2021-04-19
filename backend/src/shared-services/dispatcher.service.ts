@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { City } from 'src/modules/cities/entity/city.entity';
-import { CitiesService } from 'src/modules/cities/services/cities.service';
+import { Airport } from 'src/modules/airports/entity/airport.entity';
+import { CitiesService } from 'src/modules/airports/services/airports.service';
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { CargoService } from 'src/modules/planes/services/cargo.service';
 import { CargoStatus, ILocation } from 'src/types/all.types';
@@ -27,7 +27,7 @@ export class DispatcherService {
   }
 
   private prepareCargoToFlight(cargo: Cargo) {
-    const newDestination: City = this.getRandomDestination(cargo);
+    const newDestination: Airport = this.getRandomDestination(cargo);
     cargo.setDestination(newDestination);
 
     const newFlightAngle: number = this.calculateFlightAngleInDegrees(
@@ -37,21 +37,21 @@ export class DispatcherService {
     cargo.setFlightAngle(newFlightAngle);
   }
 
-  private getRandomDestination(cargo: Cargo): City {
-    const allCities: City[] = this.citiesService.getCities();
-    const startCity: City = cargo.start;
+  private getRandomDestination(cargo: Cargo): Airport {
+    const allCities: Airport[] = this.citiesService.getCities();
+    const startCity: Airport = cargo.start;
 
     return this.randomDiffrentCity(allCities, startCity);
   }
 
-  private randomDiffrentCity(cities: City[], startCity: City): City {
-    let randNum: number = Math.floor(Math.random() * cities.length);
+  private randomDiffrentCity(airports: Airport[], startCity: Airport): Airport {
+    let randNum: number = Math.floor(Math.random() * airports.length);
 
-    while (cities[randNum].name == startCity.name) {
-      randNum = Math.floor(Math.random() * cities.length);
+    while (airports[randNum].name == startCity.name) {
+      randNum = Math.floor(Math.random() * airports.length);
     }
 
-    return cities[randNum];
+    return airports[randNum];
   }
 
   private calculateFlightAngleInDegrees(

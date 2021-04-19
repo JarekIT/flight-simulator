@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
-import { ICity } from 'src/types/all.types';
-import { CitiesService } from '../services/cities.service';
+import { Airport } from '../entity/airport.entity';
+import { CitiesService } from '../services/airports.service';
 
-@Controller('cities')
+@Controller('airports')
 export class CitiesController {
   constructor(public readonly citiesService: CitiesService) {}
 
   @Get()
-  getAll(): ICity[] {
+  getAll(): Airport[] {
     return this.citiesService.getCities();
   }
 }

@@ -12,8 +12,10 @@ interface IIdentity {
   location: ILocation;
 }
 
-export interface ICity extends IIdentity {
+export interface IAirport extends IIdentity {
   shortName: string;
+  country: string;
+  city: string;
 }
 
 export interface IPlane extends IIdentity {
@@ -30,8 +32,8 @@ export interface IEnemyPlane extends IPlane {
 }
 
 export interface ICargoPlane extends IPlane {
-  start: ICity;
-  end: ICity;
+  start: IAirport;
+  end: IAirport;
   hitBy?: string;
   flyAway: () => void;
   board: () => void;

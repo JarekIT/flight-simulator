@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
-import { CitiesModule } from './modules/cities/cities.module';
-import { CitiesController } from './modules/cities/controllers/cities.controller';
-import { CitiesService } from './modules/cities/services/cities.service';
+import { CitiesModule } from './modules/airports/airports.module';
+import { CitiesController } from './modules/airports/controllers/airports.controller';
+import { CitiesService } from './modules/airports/services/airports.service';
 import { PlanesController } from './modules/planes/controllers/planes.controller';
 import { PlanesModule } from './modules/planes/planes.module';
 import { CargoService } from './modules/planes/services/cargo.service';
