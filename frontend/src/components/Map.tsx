@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../data/store/store";
+import { CargoDTO, CityDTO, EnemyDTO } from "../interfaces/types";
+import CircleView from "./view/CircleView";
 import MapView from "./view/MapView";
+import MarkerView from "./view/MarkerView";
+import PolylineView from "./view/PolylineView";
 
 const Map: React.FC = () => {
+  const { state } = useContext(Store);
+  const { cities } = state.citiesState;
+  const { enemies } = state.enemiesState;
+  const {
+    cargosAirport,
+    cargosFlight,
+    cargosOffline,
+  } = state.cargosState.cargos;
+
   // custom map options
   const mapOptions = {
     mapContainerStyle: {
@@ -16,10 +30,50 @@ const Map: React.FC = () => {
       disableDefaultUI: true,
       zoomControl: true,
     },
-    zoom: 5,
+    zoom: 4,
   };
 
-  return <MapView mapOptions={mapOptions}></MapView>;
+  return (
+    <MapView mapOptions={mapOptions}>
+      {cities.map((city: CityDTO) => {
+        return (
+          <React.Fragment key={city.uuid}>
+            <MarkerView type="city" element={city} />
+          </React.Fragment>
+        );
+      })}
+
+      {enemies.map((enemy: EnemyDTO) => {
+        return (
+          <React.Fragment key={enemy.uuid}>
+            <MarkerView type="enemy" element={enemy} />
+            <CircleView element={enemy} />;
+          </React.Fragment>
+        );
+      })}
+
+      {cargosAirport.map((cargo: CargoDTO) => {
+        return (
+          <MarkerView key={cargo.uuid} type="cargo-airport" element={cargo} />
+        );
+      })}
+
+      {cargosFlight.map((cargo: CargoDTO) => {
+        return (
+          <React.Fragment key={cargo.uuid}>
+            <MarkerView type="cargo-flight" element={cargo} />
+            <PolylineView element={cargo} />;
+          </React.Fragment>
+        );
+      })}
+
+      {cargosOffline.map((cargo: CargoDTO) => {
+        return (
+          <MarkerView key={cargo.uuid} type="cargo-offline" element={cargo} />
+        );
+      })}
+    </MapView>
+  );
 };
 
 export default Map;
