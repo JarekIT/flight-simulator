@@ -16,7 +16,7 @@ export class Enemy extends Plane implements IEnemyPlane {
     const distance: number = this.getDistanceBetweenPoints(this, cargo);
 
     if (distance < this.fireRange) {
-      console.log(`alert: ${cargo.name} hit by ${this.name}`);
+      console.log(`Alert: ${cargo.name} hit by ${this.name}`);
       this.shoot(cargo);
       return true;
     }

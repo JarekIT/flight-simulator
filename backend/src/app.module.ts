@@ -7,6 +7,7 @@ import { PlanesController } from './modules/planes/controllers/planes.controller
 import { PlanesModule } from './modules/planes/planes.module';
 import { CargoService } from './modules/planes/services/cargo.service';
 import { EnemyService } from './modules/planes/services/enemy.service';
+import { BattleService } from './shared-services/battle.service';
 import { DispatcherService } from './shared-services/dispatcher.service';
 import { CargoFactoryService } from './shared-services/factories/cargo-factory.service';
 import { EnemyFactoryService } from './shared-services/factories/enemy-factory.service';
@@ -32,6 +33,7 @@ import { SpawnService } from './shared-services/spawn.service';
     EnemyFactoryService,
     ManagerService,
     DispatcherService,
+    BattleService,
   ],
 })
 export class AppModule {}

@@ -22,15 +22,15 @@ export class Plane implements IPlane {
     const newLat = this.location.lat + deltaLat;
     const newLng = this.location.lng + deltaLng;
 
-    console.log(
-      `Move: ${this.name} | dist: ${distanceInKm.toFixed(
-        1,
-      )}km | angle: ${directionInDegrees.toFixed(
-        0,
-      )} | loc: { lat:${newLat.toFixed(3)} , lng: ${newLng.toFixed(
-        3,
-      )}} | change: { ${deltaLat.toFixed(4)}, ${deltaLng.toFixed(4)} }`,
-    );
+    // console.log(
+    //   `Move: ${this.name} | dist: ${distanceInKm.toFixed(
+    //     1,
+    //   )}km | angle: ${directionInDegrees.toFixed(
+    //     0,
+    //   )} | loc: { lat:${newLat.toFixed(3)} , lng: ${newLng.toFixed(
+    //     3,
+    //   )}} | change: { ${deltaLat.toFixed(4)}, ${deltaLng.toFixed(4)} }`,
+    // );
 
     this.setNewLocation(newLat, newLng);
   }
