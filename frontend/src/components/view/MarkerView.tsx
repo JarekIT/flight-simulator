@@ -37,7 +37,8 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
       icon={{
         url: setIcon(type),
         rotation: setRotation(element),
-        scaledSize: { width: 36, height: 36 },
+        scaledSize: new google.maps.Size(36, 36),
+        anchor: new google.maps.Point(18, 18),
       }}
       position={{ lat: element.location.lat, lng: element.location.lng }}
       onClick={() => console.log(element)}
