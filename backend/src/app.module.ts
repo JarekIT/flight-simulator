@@ -16,6 +16,7 @@ import { IntervalService } from './shared-services/interval.service';
 import { ManagerService } from './shared-services/manager.service';
 import { MoverService } from './shared-services/mover.service';
 import { SpawnService } from './shared-services/spawn.service';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [CitiesModule, PlanesModule],
@@ -34,6 +35,7 @@ import { SpawnService } from './shared-services/spawn.service';
     ManagerService,
     DispatcherService,
     BattleService,
+    AppGateway,
   ],
 })
 export class AppModule {}

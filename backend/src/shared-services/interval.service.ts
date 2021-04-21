@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { AppGateway } from 'src/app.gateway';
 import { BattleService } from './battle.service';
 import { DispatcherService } from './dispatcher.service';
 import { MoverService } from './mover.service';
@@ -9,6 +10,7 @@ export class IntervalService {
     private readonly moverService: MoverService,
     private readonly dispatcherService: DispatcherService,
     private readonly battleService: BattleService,
+    private readonly appGateway: AppGateway,
   ) {}
 
   startInterval(movePlaneIntervalInMs: number): void {
@@ -17,6 +19,7 @@ export class IntervalService {
       this.moverService.moveAllCargos();
       this.moverService.moveAllEnemies();
       this.battleService.everyEnemyShootsEveryCargoInFireRange();
+      this.appGateway.handleMessages();
     }, movePlaneIntervalInMs);
   }
 }
