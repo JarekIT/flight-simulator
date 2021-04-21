@@ -45,7 +45,8 @@ const Map: React.FC = () => {
         return (
           <React.Fragment key={cargo.uuid}>
             <MarkerView type="cargo-flight" element={cargo} />
-            <PolylineView element={cargo} />;
+            <PolylineView element={cargo} type="A" />;
+            <PolylineView element={cargo} type="B" />;
           </React.Fragment>
         );
       })}
