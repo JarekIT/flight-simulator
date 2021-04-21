@@ -16,25 +16,8 @@ const Map: React.FC = () => {
     cargosOffline,
   } = state.cargosState.cargos;
 
-  // custom map options
-  const mapOptions = {
-    mapContainerStyle: {
-      width: "100vw",
-      height: "100vh",
-    },
-    mapCenter: {
-      lat: 52.2319581,
-      lng: 21.0067249,
-    },
-    options: {
-      disableDefaultUI: true,
-      zoomControl: true,
-    },
-    zoom: 4,
-  };
-
   return (
-    <MapView mapOptions={mapOptions}>
+    <MapView>
       {airports.map((airport: AirportDTO) => {
         return (
           <React.Fragment key={airport.uuid}>
