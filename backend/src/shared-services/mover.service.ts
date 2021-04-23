@@ -35,9 +35,10 @@ export class MoverService {
 
   private moveCargo(cargo: Cargo): void {
     const newFlightAngle: number = this.calculateFlightAngleInDegrees(cargo);
-    cargo.setFlightAngle(newFlightAngle);
     const newLocation: ILocation = this.calculateNewLocation(cargo);
+    cargo.setFlightAngle(newFlightAngle);
     cargo.move(newLocation);
+    cargo.addLocationToFlightPath(newLocation);
   }
 
   private calculateNewLocation(plane: Plane): ILocation {

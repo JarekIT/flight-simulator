@@ -37,6 +37,7 @@ export interface ICargoPlane extends IPlane {
   hitBy?: string;
   flyAway: () => void;
   board: () => void;
+  flightPath: ILocation[];
 }
 
 export type PlaneType = Cargo | Enemy;

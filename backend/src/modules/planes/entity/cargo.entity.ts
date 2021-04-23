@@ -1,5 +1,5 @@
 import { Airport } from 'src/modules/airports/entity/airport.entity';
-import { CargoStatus, ICargoPlane } from 'src/types/all.types';
+import { CargoStatus, ICargoPlane, ILocation } from 'src/types/all.types';
 import { Plane } from './plane.entity';
 
 export class Cargo extends Plane implements ICargoPlane {
@@ -16,6 +16,7 @@ export class Cargo extends Plane implements ICargoPlane {
   start: Airport;
   end: Airport;
   hitBy: string;
+  flightPath: ILocation[] = [];
 
   static flightNumber = 0;
 
@@ -41,5 +42,9 @@ export class Cargo extends Plane implements ICargoPlane {
 
   setDestination(airport: Airport): void {
     this.end = airport;
+  }
+
+  addLocationToFlightPath(location: ILocation) {
+    this.flightPath.push(location);
   }
 }
