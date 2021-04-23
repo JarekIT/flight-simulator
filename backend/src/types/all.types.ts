@@ -22,7 +22,7 @@ export interface IPlane extends IIdentity {
   location: ILocation;
   speed: number;
   flightAngle?: number;
-  move: () => void;
+  move: (l: ILocation) => void;
 }
 
 export interface IEnemyPlane extends IPlane {

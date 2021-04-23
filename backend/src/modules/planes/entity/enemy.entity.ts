@@ -34,12 +34,12 @@ export class Enemy extends Plane implements IEnemyPlane {
       lat2: number = enemy.location.lat,
       lng2: number = enemy.location.lng,
       R = 6378137,
-      dLat: number = this.degreesToRadians(lat2 - lat1),
-      dLong: number = this.degreesToRadians(lng2 - lng1),
+      dLat: number = this.toRadians(lat2 - lat1),
+      dLong: number = this.toRadians(lng2 - lng1),
       a: number =
         Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(this.degreesToRadians(lat1)) *
-          Math.cos(this.degreesToRadians(lat1)) *
+        Math.cos(this.toRadians(lat1)) *
+          Math.cos(this.toRadians(lat1)) *
           Math.sin(dLong / 2) *
           Math.sin(dLong / 2),
       c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)),
@@ -48,7 +48,13 @@ export class Enemy extends Plane implements IEnemyPlane {
     return distance;
   }
 
-  private degreesToRadians(degrees: number): number {
+  // Converts from degrees to radians.
+  private toRadians(degrees: number) {
     return (degrees * Math.PI) / 180;
+  }
+
+  // Converts from radians to degrees.
+  private toDegrees(radians: number) {
+    return (radians * 180) / Math.PI;
   }
 }

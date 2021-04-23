@@ -17,11 +17,11 @@ export class Cargo extends Plane implements ICargoPlane {
   end: Airport;
   hitBy: string;
 
-  static i = 0;
+  static flightNumber = 0;
 
   flyAway(): void {
     try {
-      Cargo.i++;
+      Cargo.flightNumber++;
       console.log(
         `Flight nr: ${Cargo.i} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
       );
