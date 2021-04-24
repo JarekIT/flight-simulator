@@ -10,7 +10,7 @@
     "installServer": "cd backend && npm install",
     "installClient": "cd frontend && npm install",
     "installAll": "concurrently \"npm run installServer\" \"npm run installClient\"",
-    "buildClient": "cd frontend && npm run build"
+    "buildClient": "cd frontend && npm install && npm run build"
   },
   "devDependencies": {
     "concurrently": "^6.0.1"
