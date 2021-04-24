@@ -18,9 +18,19 @@ import { MoverService } from './shared-services/mover.service';
 import { SpawnService } from './shared-services/spawn.service';
 import { AppGateway } from './app.gateway';
 
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AirportSchema } from './modules/airports/schema/airport.schema';
+
 @Module({
-  imports: [CitiesModule, PlanesModule],
-  controllers: [CitiesController, PlanesController],
+  imports: [
+    ConfigModule.forRoot(),
+    MongooseModule.forRoot(process.env.MONGO_URI),
+    AirportsModule,
+    PlanesModule,
+    MongooseModule.forFeature([{ name: 'Airport', schema: AirportSchema }]),
+  ],
+  controllers: [AirportsController, PlanesController],
   providers: [
     AppService,
     IntervalService,
