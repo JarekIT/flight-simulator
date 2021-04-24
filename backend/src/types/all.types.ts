@@ -27,7 +27,7 @@ export interface IPlane extends IIdentity {
 
 export interface IEnemyPlane extends IPlane {
   fireRange: number;
-  inRange: (c: Cargo) => boolean;
+  inShootRange: (c: Cargo) => boolean;
   shoot: (c: Cargo) => void;
 }
 
@@ -35,9 +35,10 @@ export interface ICargoPlane extends IPlane {
   start: IAirport;
   end: IAirport;
   hitBy?: string;
-  flyAway: () => void;
-  board: () => void;
+  flyAway: (flightNumber: number) => void;
+  land: () => void;
   flightPath: ILocation[];
+  flightNumber: number;
 }
 
 export type PlaneType = Cargo | Enemy;

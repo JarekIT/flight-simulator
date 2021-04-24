@@ -12,8 +12,11 @@ export class Enemy extends Plane implements IEnemyPlane {
     super(uuid, name, speed);
   }
 
-  inRange(cargo: Cargo): boolean {
-    const distance: number = this.getDistanceBetweenPoints(this, cargo);
+  inShootRange(cargo: Cargo): boolean {
+    const distance: number = this.getDistanceBetweenPoints(
+      this.location,
+      cargo.location,
+    );
 
     if (distance < this.fireRange) {
       console.log(`Alert: ${cargo.name} hit by ${this.name}`);

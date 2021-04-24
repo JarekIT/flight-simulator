@@ -16,7 +16,7 @@ export class BattleService {
     this.cargoService.getCargos().forEach((cargo: Cargo) => {
       if (cargo.status == CargoStatus.FLIGHT) {
         this.enemyService.getEnemies().forEach((enemy: Enemy) => {
-          enemy.inRange(cargo);
+          enemy.inShootRange(cargo);
         });
       }
     });

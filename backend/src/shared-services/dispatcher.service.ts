@@ -12,6 +12,8 @@ export class DispatcherService {
     private readonly cargoService: CargoService,
   ) {}
 
+  private static NUMBER_OF_FLIGHT = 0;
+
   startAllCargosInAirports() {
     this.cargoService
       .getCargos()
@@ -27,7 +29,8 @@ export class DispatcherService {
 
   private sendCargoToFlight(cargo: Cargo) {
     this.prepareCargoToFlight(cargo);
-    cargo.flyAway();
+    DispatcherService.NUMBER_OF_FLIGHT++;
+    cargo.flyAway(DispatcherService.NUMBER_OF_FLIGHT);
   }
 
   private prepareCargoToFlight(cargo: Cargo) {
