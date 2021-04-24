@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../data/store/store";
+import { PolylineType } from "../interfaces/enum";
 import { CargoDTO, AirportDTO, EnemyDTO } from "../interfaces/types";
 import CircleView from "./view/CircleView";
 import MapView from "./view/MapView";
@@ -45,8 +46,9 @@ const Map: React.FC = () => {
         return (
           <React.Fragment key={cargo.uuid}>
             <MarkerView type="cargo-flight" element={cargo} />
-            <PolylineView element={cargo} type="A" />;
-            <PolylineView element={cargo} type="B" />;
+            {/* <PolylineView element={cargo} type={PolylineType.STRAIGHT_LINE} />; */}
+            <PolylineView element={cargo} type={PolylineType.TRAVELED} />;
+            <PolylineView element={cargo} type={PolylineType.LEFT} />;
           </React.Fragment>
         );
       })}

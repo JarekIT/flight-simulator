@@ -32,6 +32,7 @@ export interface CargoDTO extends IPlane {
   end: AirportDTO;
   hitBy?: string;
   status: CargoStatus;
+  flightPath: IPoint[];
 }
 
 export interface GroupedCargos {

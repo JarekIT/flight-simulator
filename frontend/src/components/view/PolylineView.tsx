@@ -1,28 +1,33 @@
 import { Polyline } from "@react-google-maps/api";
 import React from "react";
+import { PolylineType } from "../../interfaces/enum";
 import { CargoDTO } from "../../interfaces/types";
 
 type PolylineViewProps = {
   element: CargoDTO;
-  type: "A" | "B";
+  type: PolylineType;
 };
 
 const PolylineView: React.FC<PolylineViewProps> = ({ element, type }) => {
   const polylineOptions = {
-    A: {
+    LEFT: {
       strokeColor: "yellow",
       path: [
-        { lat: element.start.location.lat, lng: element.start.location.lng },
+        // { lat: element.start.location.lat, lng: element.start.location.lng },
         { lat: element.location.lat, lng: element.location.lng },
         { lat: element.end.location.lat, lng: element.end.location.lng },
       ],
     },
-    B: {
+    STRAIGHT_LINE: {
       strokeColor: "red",
       path: [
         { lat: element.start.location.lat, lng: element.start.location.lng },
         { lat: element.end.location.lat, lng: element.end.location.lng },
       ],
+    },
+    TRAVELED: {
+      strokeColor: "green",
+      path: element.flightPath,
     },
   };
 
