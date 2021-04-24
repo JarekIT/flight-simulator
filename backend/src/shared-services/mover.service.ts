@@ -51,9 +51,7 @@ export class MoverService {
   }
 
   private calculateNewLocation(plane: Plane): ILocation {
-    const distanceInMeters = this.convertSpeedToDistanceInOneInterval(
-      plane.speed,
-    );
+    const distanceInMeters = plane.convertSpeedToDistanceInOneInterval();
 
     // if defined - chose path (cargo), if undefined = random direction (enemy)
     const directionInDegrees: number =
@@ -67,10 +65,6 @@ export class MoverService {
     );
 
     return newLocation;
-  }
-
-  private convertSpeedToDistanceInOneInterval(speed: number): number {
-    return initSettings.speedScale * speed * 1000;
   }
 
   private getRandomAngle(): number {

@@ -30,34 +30,4 @@ export class Enemy extends Plane implements IEnemyPlane {
     cargo.status = CargoStatus.OFFLINE;
     cargo.hitBy = this.name;
   }
-
-  private getDistanceBetweenPoints(enemy: Enemy, cargo: Cargo): number {
-    const lat1: number = cargo.location.lat,
-      lng1: number = cargo.location.lng,
-      lat2: number = enemy.location.lat,
-      lng2: number = enemy.location.lng,
-      R = 6378137,
-      dLat: number = this.toRadians(lat2 - lat1),
-      dLong: number = this.toRadians(lng2 - lng1),
-      a: number =
-        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(this.toRadians(lat1)) *
-          Math.cos(this.toRadians(lat1)) *
-          Math.sin(dLong / 2) *
-          Math.sin(dLong / 2),
-      c: number = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)),
-      distance: number = (R * c) / 1000;
-
-    return distance;
-  }
-
-  // Converts from degrees to radians.
-  private toRadians(degrees: number) {
-    return (degrees * Math.PI) / 180;
-  }
-
-  // Converts from radians to degrees.
-  private toDegrees(radians: number) {
-    return (radians * 180) / Math.PI;
-  }
 }
