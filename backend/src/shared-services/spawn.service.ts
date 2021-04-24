@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Airport } from 'src/modules/airports/entity/airport.entity';
-import { CitiesService } from 'src/modules/airports/services/airports.service';
+import { AirportsService } from 'src/modules/airports/services/airports.service';
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { Enemy } from 'src/modules/planes/entity/enemy.entity';
 import { ILocation, ISpawner, PlaneType } from '../types/all.types';
@@ -8,7 +8,7 @@ import * as initSettings from '../settings.json';
 
 @Injectable()
 export class SpawnService implements ISpawner {
-  constructor(private readonly citiesService: CitiesService) {}
+  constructor(private readonly airportsService: AirportsService) {}
 
   private readonly centerPoint: ILocation = { lat: 50, lng: 15 };
 
@@ -32,12 +32,12 @@ export class SpawnService implements ISpawner {
   };
 
   private setRandomAirportLocation = (cargo: Cargo) => {
-    const airports: Airport[] = this.citiesService.getCities();
-    const randomCity: Airport =
+    const airports: Airport[] = this.airportsService.getAirports();
+    const randomAirport: Airport =
       airports[Math.floor(Math.random() * airports.length)];
 
-    cargo.start = randomCity;
-    return { ...randomCity.location };
+    cargo.start = randomAirport;
+    return { ...randomAirport.location };
   };
 
   /* 

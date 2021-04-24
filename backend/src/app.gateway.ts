@@ -28,7 +28,7 @@ export class AppGateway
     this.logger.log(`Initialized!' max listeners: ${server.getMaxListeners()}`);
   }
 
-  handleConnection(client: Socket, ...args: any[]) {
+  handleConnection(client: Socket) {
     this.i++;
     this.logger.log(`Client nr: ${this.i} connected, Id: ${client.id}`);
   }
@@ -38,7 +38,7 @@ export class AppGateway
   }
 
   handleMessages() {
-    this.logger.log(`Handle messages!`);
+    // this.logger.log(`Handle messages!`);
     const cargos = this.cargoService.getCargos();
     const enemies = this.enemyService.getEnemies();
 

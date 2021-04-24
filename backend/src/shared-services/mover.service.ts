@@ -124,11 +124,11 @@ export class MoverService {
   /*
   https://stackoverflow.com/questions/46590154/calculate-bearing-between-2-points-with-javascript
    */
-  calculateFlightAngleInDegrees(plane: Plane): number {
-    const startLat = this.toRadians(plane.location.lat);
-    const startLng = this.toRadians(plane.location.lng);
-    const destLat = this.toRadians(plane.end.location.lat);
-    const destLng = this.toRadians(plane.end.location.lng);
+  calculateFlightAngleInDegrees(cargo: Cargo): number {
+    const startLat = this.toRadians(cargo.location.lat);
+    const startLng = this.toRadians(cargo.location.lng);
+    const destLat = this.toRadians(cargo.end.location.lat);
+    const destLng = this.toRadians(cargo.end.location.lng);
 
     const y = Math.sin(destLng - startLng) * Math.cos(destLat);
     const x =

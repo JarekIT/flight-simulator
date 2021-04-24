@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Airport } from 'src/modules/airports/entity/airport.entity';
-import { CitiesService } from 'src/modules/airports/services/airports.service';
+import { AirportsService } from 'src/modules/airports/services/airports.service';
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { CargoService } from 'src/modules/planes/services/cargo.service';
 import { CargoStatus } from 'src/types/all.types';
@@ -8,7 +8,7 @@ import { CargoStatus } from 'src/types/all.types';
 @Injectable()
 export class DispatcherService {
   constructor(
-    private readonly citiesService: CitiesService,
+    private readonly airportsService: AirportsService,
     private readonly cargoService: CargoService,
   ) {}
 
@@ -36,19 +36,20 @@ export class DispatcherService {
   }
 
   private getRandomDestination(cargo: Cargo): Airport {
-    const allCities: Airport[] = this.citiesService.getCities();
-    const startCity: Airport = cargo.start;
+    const allAirports: Airport[] = this.airportsService.getAirports();
 
-    return this.randomDifferentCity(allCities, startCity);
+    const startAirport: Airport = cargo.start;
+
+    return this.randomDifferentAirport(allAirports, startAirport);
   }
 
-  private randomDifferentCity(
+  private randomDifferentAirport(
     airports: Airport[],
-    startCity: Airport,
+    startAirport: Airport,
   ): Airport {
     let randNum: number = Math.floor(Math.random() * airports.length);
 
-    while (airports[randNum].name == startCity.name) {
+    while (airports[randNum].name == startAirport.name) {
       randNum = Math.floor(Math.random() * airports.length);
     }
 

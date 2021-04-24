@@ -24,7 +24,7 @@ export class Cargo extends Plane implements ICargoPlane {
     try {
       Cargo.flightNumber++;
       console.log(
-        `Flight nr: ${Cargo.i} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
+        `Flight nr: ${Cargo.flightNumber} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
       );
       this.status = CargoStatus.FLIGHT;
     } catch (e) {

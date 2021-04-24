@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Airport } from '../entity/airport.entity';
 import * as airportsJson from '../db/airports.json';
-
+import * as initSettings from '../../../settings.json';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { AirportDocument, AirportModel } from '../schema/airport.schema';
@@ -12,14 +12,18 @@ import { AirportDocument, AirportModel } from '../schema/airport.schema';
  * 4) getAirports return stored airports
  */
 @Injectable()
-export class CitiesService {
-    this.initCities();
+export class AirportsService {
   constructor(
     @InjectModel('Airport')
     private readonly airportModel: Model<AirportDocument>,
+  ) {}
+
+  private allAirports: Airport[] = [];
+
+  getAirports(): Airport[] {
+    return this.allAirports;
   }
 
-  private readonly allCities: Airport[] = [];
   async getAirportsFromMongoDb() {
     let airportsFromDb: AirportModel[] = [];
 
@@ -34,28 +38,9 @@ export class CitiesService {
       airportsFromDb,
     );
 
-  getCities(): Airport[] {
-    return this.allCities;
+    this.allAirports = airportsLimited;
   }
 
-  private initCities() {
-    for (let i = 0; i < 100; i++) {
-      const id = Math.floor(Math.random() * airportsJson.length);
-      const airport = airportsJson[id];
-
-      this.allCities.push(
-        new Airport(
-          airport.id,
-          airport.name,
-          airport.country,
-          airport.city,
-          airport.iata,
-          {
-            lat: airport.lat,
-            lng: airport.lng,
-          },
-        ),
-      );
   private getLimitedNumberOfRandomAirports(
     airports: AirportModel[],
   ): Airport[] {

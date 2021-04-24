@@ -1,5 +1,8 @@
+    "enemySpawnRangeInKm": 5000,
+    "numberOfAirports": 3
   /*
     scale 1 => 1h in real = 1 sec in simulator
+    sppedScale = 1 => 1h in real = 1 sec in simulator
     so 100 km/h => 1 sec = 100 km traveled
     scale 0.01 => 1 sec = 1 km traveled
   */
@@ -8,5 +11,4 @@
     "intervalInMs": 1000,
     "numberOfCargos": 10,
     "numberOfEnemies": 10,
-    "enemySpawnRangeInKm": 2000
 }

@@ -1,13 +1,13 @@
 import { Controller, Get } from '@nestjs/common';
 import { Airport } from '../entity/airport.entity';
-import { CitiesService } from '../services/airports.service';
+import { AirportsService } from '../services/airports.service';
 
 @Controller('airports')
-export class CitiesController {
-  constructor(public readonly citiesService: CitiesService) {}
+export class AirportsController {
+  constructor(public readonly airportsService: AirportsService) {}
 
   @Get()
   getAll(): Airport[] {
-    return this.citiesService.getCities();
+    return this.airportsService.getAirports();
   }
 }
