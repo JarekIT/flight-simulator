@@ -20,6 +20,19 @@ export class CitiesService {
   }
 
   private readonly allCities: Airport[] = [];
+  async getAirportsFromMongoDb() {
+    let airportsFromDb: AirportModel[] = [];
+
+    try {
+      airportsFromDb = await this.airportModel.find().exec();
+    } catch (error) {
+      console.error(error);
+      airportsFromDb = airportsJson;
+    }
+
+    const airportsLimited: Airport[] = this.getLimitedNumberOfRandomAirports(
+      airportsFromDb,
+    );
 
   getCities(): Airport[] {
     return this.allCities;
@@ -43,6 +56,35 @@ export class CitiesService {
           },
         ),
       );
+  private getLimitedNumberOfRandomAirports(
+    airports: AirportModel[],
+  ): Airport[] {
+    const numberOfAirports: number = initSettings.numberOfAirports;
+
+    const airportsLimited: Airport[] = [];
+
+    for (let i = 0; i < numberOfAirports; i++) {
+      const index = Math.floor(Math.random() * airports.length);
+      const randomAirport: AirportModel = airports[index];
+      airports.splice(index, 1);
+
+      airportsLimited.push(this.createAirportEntityFromModel(randomAirport));
     }
+
+    return airportsLimited;
+  }
+
+  private createAirportEntityFromModel(randomAirport: AirportModel): Airport {
+    return new Airport(
+      randomAirport.id,
+      randomAirport.name,
+      randomAirport.country,
+      randomAirport.city,
+      randomAirport.iata,
+      {
+        lat: randomAirport.lat,
+        lng: randomAirport.lng,
+      },
+    );
   }
 }

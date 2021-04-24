@@ -9,24 +9,33 @@ export class AppService {
     private readonly intervalService: IntervalService,
     private readonly managerService: ManagerService,
   ) {
-    this.prepareCargos(initSettings.numberOfCargos);
-    this.prepareEnemies(initSettings.numberOfEnemies);
+    this.initApp();
+  }
+
+  private async initApp() {
+    await this.initAirports();
+    this.initCargos(initSettings.numberOfCargos);
+    this.initEnemies(initSettings.numberOfEnemies);
     this.initInterval(initSettings.intervalInMs);
   }
 
-  private initInterval(movePlaneIntervalInMs: number): void {
-    this.intervalService.startInterval(movePlaneIntervalInMs);
+  private async initAirports() {
+    await this.managerService.getAirports();
   }
 
-  private prepareCargos(nrOfPlanes: number) {
+  private initCargos(nrOfPlanes: number) {
     for (let i = 0; i < nrOfPlanes; i++) {
       this.managerService.createCargo();
     }
   }
 
-  private prepareEnemies(nrOfPlanes: number) {
+  private initEnemies(nrOfPlanes: number) {
     for (let i = 0; i < nrOfPlanes; i++) {
       this.managerService.createEnemy();
     }
+  }
+
+  private initInterval(movePlaneIntervalInMs: number): void {
+    this.intervalService.startInterval(movePlaneIntervalInMs);
   }
 }
