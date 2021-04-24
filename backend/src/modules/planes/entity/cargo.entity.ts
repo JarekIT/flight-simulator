@@ -3,11 +3,7 @@ import { CargoStatus, ICargoPlane, ILocation } from 'src/types/all.types';
 import { Plane } from './plane.entity';
 
 export class Cargo extends Plane implements ICargoPlane {
-  constructor(
-    public uuid: string,
-    public name: string = 'aaa',
-    public speed: number,
-  ) {
+  constructor(public uuid: string, public name: string, public speed: number) {
     super(uuid, name, speed);
     this.status = CargoStatus.AIRPORT;
   }
@@ -17,23 +13,40 @@ export class Cargo extends Plane implements ICargoPlane {
   end: Airport;
   hitBy: string;
   flightPath: ILocation[] = [];
+  flightNumber: number;
 
-  static flightNumber = 0;
-
-  flyAway(): void {
-    try {
-      Cargo.flightNumber++;
-      console.log(
-        `Flight nr: ${Cargo.flightNumber} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
-      );
-      this.status = CargoStatus.FLIGHT;
-    } catch (e) {
-      console.error(e);
-    }
+  flyAway(flightNumber: number): void {
+    this.flightNumber = flightNumber;
+    this.status = CargoStatus.FLIGHT;
+    console.log(
+      `Flight nr: ${this.flightNumber} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status}`,
+    );
   }
 
-  board(): void {
-    throw new Error('not implemented yet');
+  inLandingRange() {
+    const distanceInKm = this.convertSpeedToDistanceInOneInterval() / 1000;
+    const distanceToDestination = this.getDistanceBetweenPoints(
+      this.location,
+      this.end.location,
+    );
+
+    // console.log(`Distance: ${this.name} - ${distanceInKm.toFixed(0)} - ${distanceToDestination.toFixed(0)} - ${(distanceToDestination/distance).toFixed(0)} sec left`)
+
+    return distanceInKm > distanceToDestination;
+  }
+
+  land(): void {
+    console.log(
+      `Flight nr: ${this.flightNumber} | ${this.name} - ${this.start.name} -> ${this.end.name} | ${this.status} -> prepare for landing`,
+    );
+    this.status = CargoStatus.AIRPORT;
+    this.flightPath = [];
+    this.start = { ...this.end };
+    this.end = null;
+    this.flightNumber = null;
+    console.log(
+      `Flight nr: ${this.flightNumber} ended | ${this.name} - ${this.start.name} -> ${this.end?.name} | ${this.status} -> landed`,
+    );
   }
 
   setFlightAngle(angle: number): void {

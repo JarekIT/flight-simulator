@@ -4,7 +4,6 @@ import { Enemy } from 'src/modules/planes/entity/enemy.entity';
 import { CargoService } from 'src/modules/planes/services/cargo.service';
 import { EnemyService } from 'src/modules/planes/services/enemy.service';
 import { CargoStatus, ILocation } from 'src/types/all.types';
-import * as initSettings from 'src/settings.json';
 import { Plane } from 'src/modules/planes/entity/plane.entity';
 
 @Injectable()
@@ -34,11 +33,21 @@ export class MoverService {
   }
 
   private moveCargo(cargo: Cargo): void {
+    if (this.canLand(cargo)) {
+      cargo.land();
+      return;
+    }
+
     const newFlightAngle: number = this.calculateFlightAngleInDegrees(cargo);
     const newLocation: ILocation = this.calculateNewLocation(cargo);
+
     cargo.setFlightAngle(newFlightAngle);
     cargo.move(newLocation);
     cargo.addLocationToFlightPath(newLocation);
+  }
+
+  private canLand(cargo: Cargo): boolean {
+    return cargo.inLandingRange();
   }
 
   private calculateNewLocation(plane: Plane): ILocation {
