@@ -9,14 +9,14 @@
     "target": "es2017",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./backend/",
+    "baseUrl": "./",
     "incremental": true,
     "rootDir": "./",
     "resolveJsonModule": true,
     "skipLibCheck": true
   },
     "include": [
-    "backend/src/**/*.ts",
-    "backend/test/**/*.ts",
+    "src/**/*.ts",
+    "test/**/*.ts",
   ]
 }

@@ -28,9 +28,10 @@ export class AirportsService {
     let airportsFromDb: AirportModel[] = [];
 
     try {
-      airportsFromDb = await this.airportModel.find().exec();
+      // airportsFromDb = await this.airportModel.find().exec();
+      airportsFromDb = airportsJson;
     } catch (error) {
-      console.error(error);
+      // console.error(error);
       airportsFromDb = airportsJson;
     }
 
