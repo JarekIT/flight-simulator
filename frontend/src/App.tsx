@@ -1,14 +1,14 @@
-import React, { useEffect, useContext } from "react";
-import "./App.css";
-import Map from "./components/Map";
-import { loadCargos } from "./data/actions/cargos.actions";
-import { loadAirports } from "./data/actions/airports.actions";
-import { loadEnemies } from "./data/actions/enemies.actions";
-import { Store } from "./data/store/store";
+import React, { useEffect, useContext } from 'react';
+import './App.css';
+import Map from './components/Map';
+import { loadCargos } from './data/actions/cargos.actions';
+import { loadAirports } from './data/actions/airports.actions';
+import { loadEnemies } from './data/actions/enemies.actions';
+import { Store } from './data/store/store';
 
-import { openSocketConnection } from "./data/socket/socket";
+import { openSocketConnection } from './data/socket/socket';
 
-function App() {
+function App(): JSX.Element {
   const { dispatch } = useContext(Store);
 
   useEffect(() => {

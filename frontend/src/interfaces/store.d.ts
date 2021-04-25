@@ -1,4 +1,4 @@
-import { CargoDTO, AirportDTO, EnemyDTO, GroupedCargos } from "./types";
+import { AirportDTO, EnemyDTO, GroupedCargos } from './types';
 
 export type Dispatch = React.Dispatch<IAction>;
 

@@ -1,44 +1,40 @@
-import React, { useReducer, createContext } from "react";
-import { IState, IStore } from "../../interfaces/store";
-import { reducer } from "../reducers/reducer";
+import React, { useReducer, createContext } from 'react';
+import { IState, IStore } from '../../interfaces/store';
+import { reducer } from '../reducers/reducer';
 
 const initialState: IState = {
   airportsState: {
     isLoaded: false,
     airports: [],
-    error: null,
+    error: null
   },
   enemiesState: {
     isLoaded: false,
     enemies: [],
-    error: null,
+    error: null
   },
   cargosState: {
     isLoaded: false,
     cargos: {
       cargosAirport: [],
       cargosFlight: [],
-      cargosOffline: [],
+      cargosOffline: []
     },
-    error: null,
-  },
+    error: null
+  }
 };
 
 const Store: React.Context<IStore> = createContext<IStore>({
   state: initialState,
   dispatch: () => {
-    throw new Error("Context Must Be initialized");
-  },
+    throw new Error('Context Must Be initialized');
+  }
 });
 
-function StoreProvider({
-  children,
-}: JSX.ElementChildrenAttribute): JSX.Element {
+function StoreProvider({ children }: JSX.ElementChildrenAttribute): JSX.Element {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>
-  );
+  return <Store.Provider value={{ state, dispatch }}>{children}</Store.Provider>;
 }
 
 export { Store, StoreProvider };

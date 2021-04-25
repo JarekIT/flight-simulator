@@ -1,6 +1,6 @@
-import { Marker } from "@react-google-maps/api";
-import React from "react";
-import { IIdentity } from "../../interfaces/types";
+import { Marker } from '@react-google-maps/api';
+import React from 'react';
+import { IIdentity } from '../../interfaces/types';
 
 type MarkerViewProps = {
   type: string;
@@ -12,24 +12,24 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
 
   const setIcon = (type: string): string => {
     switch (type) {
-      case "airport":
+      case 'airport':
         return `${path}/images/airport.svg`;
-      case "enemy":
+      case 'enemy':
         return `${path}/images/helicopter.svg`;
-      case "cargo-airport":
+      case 'cargo-airport':
         return `${path}/images/cargo-airport.svg`;
-      case "cargo-flight":
+      case 'cargo-flight':
         return `${path}/images/cargo-flight.svg`;
-      case "cargo-offline":
+      case 'cargo-offline':
         return `${path}/images/cargo-explosion.svg`;
 
       default:
-        return "";
+        return '';
     }
   };
 
   const setRotation = (element: IIdentity): number => {
-    return "flightAngle" in element ? element["flightAngle"] : 0;
+    return 'flightAngle' in element ? element['flightAngle'] : 0;
   };
 
   return (
@@ -38,7 +38,7 @@ const MarkerView: React.FC<MarkerViewProps> = ({ type, element }) => {
         url: setIcon(type),
         rotation: setRotation(element),
         scaledSize: new google.maps.Size(36, 36),
-        anchor: new google.maps.Point(18, 18),
+        anchor: new google.maps.Point(18, 18)
       }}
       position={{ lat: element.location.lat, lng: element.location.lng }}
       onClick={() => console.log(element)}

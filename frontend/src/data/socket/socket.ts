@@ -1,17 +1,19 @@
-import io from "socket.io-client";
-import { CargoDTO, EnemyDTO } from "../../interfaces/types";
+import io from 'socket.io-client';
+import { CargoDTO, EnemyDTO } from '../../interfaces/types';
 
-const ENDPOINT = "ws://localhost:3004";
+const ENDPOINT = 'ws://localhost:3004';
 const socket = io(ENDPOINT);
 
-export const openSocketConnection = () => {
+export const openSocketConnection = (): void => {
   console.log(socket);
 
-  socket.on("enemies", (enemies: EnemyDTO[]) => {
+  // eslint-disable-next-line
+  socket.on('enemies', (enemies: EnemyDTO[]) => {
     // console.log(enemies);
   });
 
-  socket.on("cargos", (cargos: CargoDTO) => {
+  // eslint-disable-next-line
+  socket.on('cargos', (cargos: CargoDTO) => {
     // console.log(cargos);
   });
 };

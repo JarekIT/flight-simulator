@@ -1,7 +1,8 @@
-import axios, { AxiosResponse } from "axios";
-import { CargoDTO } from "../../interfaces/types";
+import axios, { AxiosResponse } from 'axios';
+import { CargoDTO } from '../../interfaces/types';
 
-require("dotenv").config();
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+require('dotenv').config();
 
 export const fetchCargos = async (): Promise<CargoDTO[] | Error> => {
   const API: string | undefined = process.env.REACT_APP_API_URL;

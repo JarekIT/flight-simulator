@@ -1,20 +1,20 @@
-import { CargoStatus } from "../../interfaces/enum";
-import { Dispatch } from "../../interfaces/store";
-import { CargoDTO, GroupedCargos } from "../../interfaces/types";
-import { fetchCargos } from "../fetch/cargos.fetch";
+import { CargoStatus } from '../../interfaces/enum';
+import { Dispatch } from '../../interfaces/store';
+import { CargoDTO, GroupedCargos } from '../../interfaces/types';
+import { fetchCargos } from '../fetch/cargos.fetch';
 
 export const loadCargos = async (dispatch: Dispatch): Promise<void> => {
-  let data: CargoDTO[] | Error = await fetchCargos();
+  const data: CargoDTO[] | Error = await fetchCargos();
 
   if (data instanceof Error) {
     dispatch({
-      type: "CARGOS_GET_FAILURE",
-      payload: data,
+      type: 'CARGOS_GET_FAILURE',
+      payload: data
     });
   } else {
     dispatch({
-      type: "CARGOS_GET_SUCCESS",
-      payload: groupedCargosByStatus(data),
+      type: 'CARGOS_GET_SUCCESS',
+      payload: groupedCargosByStatus(data)
     });
   }
 };
@@ -23,7 +23,7 @@ const groupedCargosByStatus = (cargosToGroup: CargoDTO[]): GroupedCargos => {
   const cargos: GroupedCargos = {
     cargosAirport: [],
     cargosFlight: [],
-    cargosOffline: [],
+    cargosOffline: []
   };
 
   cargosToGroup.forEach((cargo: CargoDTO) => {
@@ -33,10 +33,7 @@ const groupedCargosByStatus = (cargosToGroup: CargoDTO[]): GroupedCargos => {
   return cargos;
 };
 
-const pushCargoInTheRightGroup = (
-  cargo: CargoDTO,
-  cargos: GroupedCargos
-): void => {
+const pushCargoInTheRightGroup = (cargo: CargoDTO, cargos: GroupedCargos): void => {
   switch (cargo.status) {
     case CargoStatus.AIRPORT:
       cargos.cargosAirport.push(cargo);

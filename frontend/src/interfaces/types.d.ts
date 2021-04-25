@@ -1,4 +1,4 @@
-import { CargoStatus } from "./enum";
+import { CargoStatus } from './enum';
 
 export interface IPoint {
   lat: number;
