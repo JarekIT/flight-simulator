@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { IntervalService } from './shared-services/interval.service';
 import { ManagerService } from './shared-services/manager.service';
-import * as initSettings from './settings.json';
+import * as initSettings from './config/settings.json';
 
 @Injectable()
 export class AppService {

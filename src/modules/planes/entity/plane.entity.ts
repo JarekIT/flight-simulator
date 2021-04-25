@@ -1,5 +1,5 @@
 import { ILocation, IPlane } from 'src/types/all.types';
-import * as initSettings from 'src/settings.json';
+import * as initSettings from 'src/config/settings.json';
 
 export class Plane implements IPlane {
   constructor(public uuid: string, public name: string, public speed: number) {}

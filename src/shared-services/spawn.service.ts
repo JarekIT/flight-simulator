@@ -4,7 +4,7 @@ import { AirportsService } from 'src/modules/airports/services/airports.service'
 import { Cargo } from 'src/modules/planes/entity/cargo.entity';
 import { Enemy } from 'src/modules/planes/entity/enemy.entity';
 import { ILocation, ISpawner, PlaneType } from '../types/all.types';
-import * as initSettings from '../settings.json';
+import * as initSettings from '../config/settings.json';
 
 @Injectable()
 export class SpawnService implements ISpawner {

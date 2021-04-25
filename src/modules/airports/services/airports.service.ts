@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Airport } from '../entity/airport.entity';
-import * as airportsJson from '../db/airports.json';
-import * as initSettings from '../../../settings.json';
+import * as airportsJson from '../../../api/db/airports.json';
+import * as initSettings from '../../../config/settings.json';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { AirportDocument, AirportModel } from '../schema/airport.schema';
